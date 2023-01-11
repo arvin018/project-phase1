@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      User.belongsTo(models.Profile),
+      //kalau belong to ga perlu     => User.belongsTo(models.Profile)
       User.hasMany(models.Transaction)
     }
   }

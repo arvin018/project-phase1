@@ -15,7 +15,9 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Category.init({
-    name: DataTypes.STRING,
+    name: {
+    type :DataTypes.STRING,
+    allowNull:false,
     validate:{
       notEmpty:{
         msg:'companyId not empty'
@@ -23,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       notNull:{
         msg:'companyId not null'
       }
-    }
+    }}
   }, {
     sequelize,
     modelName: 'Category',

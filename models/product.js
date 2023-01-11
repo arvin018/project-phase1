@@ -19,6 +19,7 @@ module.exports = (sequelize, DataTypes) => {
   Product.init({
     name: {
       type :DataTypes.STRING,
+      allowNull : false,
       validate:{
         notEmpty:{
           msg:'name not empty'
@@ -30,6 +31,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     desciption: {
       type :DataTypes.STRING,
+      allowNull:false,
       validate:{
         notEmpty:{
           msg:'description not empty'
@@ -41,6 +43,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     price: {
      type: DataTypes.STRING,
+     allowNull:false,
      validate:{
       notEmpty:{
         msg:'price not empty'
@@ -52,6 +55,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     CategoryId:{ 
       type:DataTypes.INTEGER,
+      allowNull:false,
       validate:{
         notEmpty:{
           msg:'categoryId not empty'
@@ -67,6 +71,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     CompanyId: {
       type:DataTypes.INTEGER,
+      allowNull:false,
       validate:{
         notEmpty:{
           msg:'companyId not empty'
