@@ -1,4 +1,4 @@
-const { User, Profile, Category } = require("../models/index")
+const { User, Profile, Category,Product,Company} = require("../models/index")
 
 class Controller {
 
@@ -139,7 +139,73 @@ class Controller {
       res.send(err)
     });
   }
-  ///profiles
+//Product Admins
+static tabelProduct (req,res){
+  Product.findAll()
+  .then((result) => {
+    res.render('tabelProduct',{tabelProduct:result})
+  }).catch((err) => {
+    res.send(err)
+  });
+} 
+  // Company Admins
+  static tabelCompany(req,res){
+    Company.findAll()
+    .then((result) => {
+      res.render('tabelCompany',{tabelCompany:result})
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+
+  static formAddCompany(req,res){
+    res.render('formAddCompany')
+  }
+
+  static handlerAddCompany(req,res){
+    let {name,address,phoneNumber} =req.body
+    Company.create({
+      name,address,phoneNumber
+    })
+    .then((result) => {
+      res.redirect('/admins/tabelCompanys')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+
+  static formEditCompany(req,res){
+    let {id}=req.params 
+    Company.findOne({
+      where:{
+        id:id
+      }
+    })
+    .then((result) => {
+      res.render('formEditCompany',{editCompany:result})
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+
+  static handlerEditCompany(req,res){
+    let {id} =req.params
+    let {name,address,phoneNumber}=req.body
+    Company.update({
+      name,address,phoneNumber
+    },{
+      where:{
+        id:id
+      }
+    })
+    .then((result) => {
+      res.redirect('/admins/tabelCompanys')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+
+  ///profiles Users
   static formProfile(req, res) {
     res.render('formProfile')
   }

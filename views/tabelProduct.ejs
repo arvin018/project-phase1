@@ -13,21 +13,34 @@
     <br>
     <br>
     <h1>Tabel Product Admins</h1>
-    <a href="/admins/addCategorys"> Add Category</a>
+    <a href="/admins/addProduct"> Add Product</a>
 
     <br>
     <br>
     <table border="1">
         <tr>
             <th>No</th>
-            <th>name Category</th>
-            <th>Action</th>
+            <th>Name Product</th>
+            <th>Description Product</th>
+            <th>Denom</th>
+            <th>Price</th>
+            <th>imageUrl</th>
+            <th>category Id</th>
+            <th>company Id</th>
+            <th colspan="2">Action</th>
         </tr>
-            <% tabelCategory.forEach((el,i) => { %>
+             <% tabelProduct.forEach((el,i) => { %> 
             <tr>
                 <td> <%=(i+1)%> </td>
                 <td> <%=el.name%> </td>
-                <td> <a href="/admins/<%=el.id%>/editCategorys">  <button>  Edit  </button> </a> </td>
+                <td> <%=el.description%> </td>
+                <td> <%=el.denom%> </td>
+                <td> <%=el.price%> </td>
+                <td> <%=el.imageUrl%> </td>
+                <th> <%=el.CategoryId%></th>
+                <th> <%=el.CompanyId%></th>
+                <td> <a href="/admins/<%=el.id%>/editProducts">  <button>  Edit  </button> </a> </td>
+                <td> <a href="/admins/<%=el.id%>/editProducts">  <button>  Edit  </button> </a> </td>
             </tr>
             <% }) %>
         
