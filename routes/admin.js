@@ -18,6 +18,8 @@ router.post('/:id/edit', Controller.handlerEditAddUser)
 router.get('/:id/delete', Controller.deleteUser)
 
 router.get('/tabelCategory', Controller.tabelCategory)
+// /admins/<%=el.id%>/editCategory
+router.get('/admins/:id/editCategory', Controller.FormEditCategory)
 
 
 
