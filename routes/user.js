@@ -6,8 +6,10 @@ const router = express.Router()
 // /users
 router.get('/', Controller.homeUser)
 
-router.get('/users/:id/edit/profiles',Controller.formProfile)
-router.post('/users/:id/edit/profiles',Controller.handlerProfile)
+router.get('/buy/:id', Controller.buyProduct)
+
+router.get('/users/:id/edit/profiles', Controller.formProfile)
+router.post('/users/:id/edit/profiles', Controller.handlerProfile)
 
 
 

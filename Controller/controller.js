@@ -1,10 +1,42 @@
-const { User, Profile, Category,Product,Company} = require("../models/index")
+const { User, Profile, Category, Product, Company} = require("../models/index")
 
 class Controller {
 
   static home(req, res) {
-    res.render('home')
+    const { category } = req.query
+
+    Category.findAll({
+      include: {
+        model: Product,
+        attributes: ['id', 'name', 'imageUrl']
+      }
+    })
+      .then((data) => {
+        // res.send(data)
+        res.render('home', { data })
+      })
+      .catch((err) => {
+        res.send(err)
+      })
   }
+
+  static buyProduct(req, res) {
+    const id = req.params.id
+
+    Product.findOne({
+      where: {
+        id
+      }
+    })
+      .then((data) => {
+        // res.send(data)
+        res.render('buyProduct', { data })
+      })
+      .catch((err) => {
+        res.send(err)
+      })
+  }
+
   static homeAdmin(req, res) {
     res.render('homeAdmin')
   }
