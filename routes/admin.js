@@ -23,6 +23,10 @@ router.post('/addCategorys', Controller.handlAddCategory)
 router.get('/addCompanys',Controller.formAddCompany)
 router.post('/addCompanys',Controller.handlerAddCompany)
 
+// /admins/addProducts
+router.get('/addPrdoucts',Controller.formAddProduct)
+router.post('/addPrdoucts',Controller.handlerAddProduct)
+
 router.get('/:id/editCategorys', Controller.FormEditCategory)
 router.post('/:id/editCategorys', Controller.handletEditCategory)
 
@@ -36,9 +40,15 @@ router.post('/:id/edit', Controller.handlerEditAddUser)
 router.get('/:id/editCompanys', Controller.formEditCompany)
 router.post('/:id/editCompanys', Controller.handlerEditCompany)
 
+// /admins/<%=el.id%>/editProducts
+router.get('/:id/editProducts', Controller.formEditProduct)
+router.post('/:id/editProducts', Controller.handlerEditProduct)
 
 // /admins/<%=el.id%>/delete
 router.get('/:id/delete', Controller.deleteUser)
+
+// /admins/<%=el.id%>/deleteProducts
+router.get('/:id/deleteProducts', Controller.deleteProduct)
 
 
 

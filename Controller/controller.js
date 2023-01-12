@@ -236,6 +236,68 @@ static tabelProduct (req,res){
       res.send(err)
     });
   }
+  // Product
+  static formAddProduct(req,res){
+    res.render('formAddProduct')
+  }
+  static handlerAddProduct(req,res){
+    console.log("masuk sini");
+    let {name,denom,price,description,CategoryId,CompanyId,imageUrl} =req.body
+    // console.log(name,denom,price,description,CategoryId,CompanyId,imageUrl);
+    Product.create({
+      name,denom,price,description,CategoryId,CompanyId,imageUrl
+    })
+    .then((result) => {
+      res.redirect('/admins/tabelProducts')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+
+  static formEditProduct(req,res){
+    let {id}=req.params
+    Product.findOne({
+      where:{
+        id:id
+      }
+    })
+    .then((result) => {
+      res.render('formEditProduct',{editProduct:result})
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+
+  static handlerEditProduct(req,res){
+    let {id}=req.params
+    let {name,denom,price,description,CategoryId,CompanyId,imageUrl} =req.body
+    Product.update({
+      name,denom,price,description,CategoryId,CompanyId,imageUrl
+    },{
+      where:{
+        id:id
+      }
+    })
+    .then((result) => {
+      res.redirect('/admins/tabelProducts')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
+
+  static deleteProduct (req,res){
+    let {id}=req.params
+    Product.destroy({
+      where:{
+        id:id
+      }
+    })
+    .then((result) => {
+      res.redirect('/admins/tabelProducts')
+    }).catch((err) => {
+      res.send(err)
+    });
+  }
 
   ///profiles Users
   static formProfile(req, res) {
@@ -257,6 +319,22 @@ static tabelProduct (req,res){
       }).catch((err) => {
         res.send(err);
       });
+  }
+  static formRegister(req,res){
+    res.render('formRegisterUser')
+  }
+  static handlerAddRegister(req,res){
+    let {username,password}= req.body
+    User.create({
+      username,password,typeUser:'user'
+    })
+    .then((result) => {
+      // res.send(result)
+      res.redirect('/users')
+      // harus disini juga buat profil dengan user id ini
+    }).catch((err) => {
+      res.send(err)
+    });
   }
 
 }

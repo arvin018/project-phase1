@@ -7,17 +7,20 @@
     <title>Document</title>
 </head>
 <body>
-  
     <a href="/">Home</a>
     <a href="/admins">home Admin</a>
     <a href="/users">home Users</a>
-
-
-    <h1>Home Users</h1>
     <br>
     <br>
-     <h1>Profile User</h1>
-     <a href="/users/register">Register</a>
-     <a href="/users/profiles">Profile</a>
+   
+    <h1>Form Register User</h1>
+    <form action="/users/register" method="POST">
+    Username <br>
+    <input type="text" name="username" id=""><br><br>
+    password  <br>
+    <input type="text" name="password" id=""><br>
+    <br>
+    <input type="submit">
+</form>
 </body>
 </html>
