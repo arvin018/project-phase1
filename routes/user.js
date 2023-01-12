@@ -9,12 +9,11 @@ router.get('/', Controller.homeUser)
 
 router.get('/buy/:id', Controller.buyProduct)
 
-router.get('/users/:id/edit/profiles', Controller.formProfile)
-router.post('/users/:id/edit/profiles', Controller.handlerProfile)
+router.get('/:id/edit/profiles', Controller.formProfile)
+router.post('/:id/edit/profiles', Controller.handlerProfile)
 
-
-
-
-
+// /users/register
+router.get('/register', Controller.formRegister)
+router.post('/register', Controller.handlerAddRegister)
 
 module.exports = router

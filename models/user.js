@@ -21,10 +21,10 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     username: DataTypes.STRING,
     password: DataTypes.STRING,
-    typeUser: DataTypes.STRING
+    role: DataTypes.STRING
   }, {
-    hook : {
-      beforeCreate(instance, option) {
+    hooks : {
+      beforeCreate (instance, option) {
         console.log(instance, '<<<< ini before Create')
         const salt = bcrypt.genSaltSync(10)
         const hash = bcrypt.hashSync(instance.password, salt)

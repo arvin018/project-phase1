@@ -1,10 +1,10 @@
 const { User, Profile, Category, Product, Company} = require("../models/index")
-
+const bcrypt = require('bcryptjs');
 class Controller {
 
   static home(req, res) {
     const { category } = req.query
-
+    const {error} =req.query
     Category.findAll({
       include: {
         model: Product,
@@ -13,7 +13,7 @@ class Controller {
     })
       .then((data) => {
         // res.send(data)
-        res.render('home', { data })
+        res.render('home', { data ,error})
       })
       .catch((err) => {
         res.send(err)
@@ -60,9 +60,9 @@ class Controller {
   }
 
   static handlerAddUser(req, res) {
-    let { username, password, typeUser } = req.body
+    let { username, password, role } = req.body
     User.create({
-      username, password, typeUser
+      username, password, role
     })
       .then((result) => {
         res.redirect('/admins/tabelUsers')
@@ -87,10 +87,10 @@ class Controller {
 
   static handlerEditAddUser(req, res) {
     let { id } = req.params
-    let { username, password, typeUser } = req.body
+    let { username, password, role } = req.body
 
     User.update({
-      username, password, typeUser
+      username, password, role
     }, {
       where: {
         id: id
@@ -320,22 +320,67 @@ static tabelProduct (req,res){
         res.send(err);
       });
   }
+
+  /// User register
   static formRegister(req,res){
     res.render('formRegisterUser')
   }
+
   static handlerAddRegister(req,res){
     let {username,password}= req.body
     User.create({
-      username,password,typeUser:'user'
-    })
+      username,password,role:'user'
+    }, {returning: true} )
     .then((result) => {
       // res.send(result)
-      res.redirect('/users')
-      // harus disini juga buat profil dengan user id ini
+      console.log(result.id);
+      return Profile.create({
+        firstName:'',
+        lastName:'',
+        phoneNumber:'',
+        wallet:0,
+        email:'',
+        UserId:result.id
+      })
+      .then((data)=>{
+        res.redirect('/users')
+      })
     }).catch((err) => {
       res.send(err)
     });
   }
+  /// User login 
+   static handlerLogin(req,res){
+     let {username,password}= req.body
+ 
+      
+      User.findOne({where:{username}})
+      .then(user=>{
+        if(user){
+          const  isValidPassword =bcrypt.compareSync(password,user.password) //true or false
+          if(isValidPassword){
+            console.log(user.role);
+            if(user.role === 'admin'){
+              return res.redirect('/admins')
+            }else if (user.role === 'user'){
+              return res.redirect('/users')
+            }
+          }else{
+            const error ='invalid  username/password';
+            return res.redirect(`/?error=${error}`) 
+          }
+        }else{
+          const error ='invalid  username/password';
+          return res.redirect(`/?error=${error}`) 
+        }
+      })
+      .catch(err=>{
+        res.send(err)
+      })
+
+      // res.render('homeUsers')
+  
+   }
 
 }
 module.exports = Controller
