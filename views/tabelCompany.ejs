@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabel Company</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/admins">home Admin</a>
+    <a href="/users">home Users</a>
+    <br>
+    <br>
+    <h1>Tabel Company</h1>
+    <a href="/admins/addCompanys"> Add Company</a>
+
+    <br>
+    <br>
+    <table border="1">
+        <tr>
+            <th>No</th>
+            <th>name Company</th>
+            <th>Address</th>
+            <th>Phone Number</th>
+            <th>Action</th>
+        </tr>
+            <% tabelCompany.forEach((el,i) => { %>
+        <tr>
+            <td> <%=(i+1)%> </td>
+            <td> <%=el.name%> </td>
+            <td> <%=el.address%> </td>
+            <td> <%=el.phoneNumber%> </td>
+            <td> <a href="/admins/<%=el.id%>/editCompanys">  <button>  Edit  </button> </a> </td>
+        </tr> 
+            <% }) %>
+        
+    </table>
+</body>
+</html>

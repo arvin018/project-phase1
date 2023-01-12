@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/admins">home Admin</a>
+    <a href="/users">home Users</a>
+    <br>
+    <br>
+   
+    <h1>Form Edit  Company</h1>
+    <form action="/admins/<%=editCompany.id%>/editCompanys" method="POST">
+    name Company <br>
+    <input type="text" name="name" id="" value="<%=editCompany.name%>"><br><br>
+
+    Adress Company <br>
+    <input type="text" name="address" id="" value="<%=editCompany.address%>">
+    <br>
+    <br>
+    phone Number Company <br>
+    <input type="text" name="phoneNumber" id="" value="<%=editCompany.phoneNumber%>">
+    <br>
+    <br>
+    <input type="submit">
+</form>
+</body>
+</html>
