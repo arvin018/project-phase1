@@ -7,9 +7,18 @@ const router = express.Router()
 router.get('/', Controller.homeAdmin)
 
 router.get('/tabelUsers', Controller.tabelUser)
+router.get('/tabelCategory', Controller.tabelCategory)
 
 router.get('/add', Controller.formAddUser)
 router.post('/add', Controller.handlerAddUser)
+
+// /admins/addCategorys
+router.get('/addCategorys', Controller.formAddCategory)
+router.post('/addCategorys', Controller.handlAddCategory)
+
+router.get('/:id/editCategorys', Controller.FormEditCategory)
+router.post('/:id/editCategorys', Controller.handletEditCategory)
+
 // /admins/<%=el.id%>/edit
 router.get('/:id/edit', Controller.formEditUser)
 router.post('/:id/edit', Controller.handlerEditAddUser)
@@ -17,9 +26,14 @@ router.post('/:id/edit', Controller.handlerEditAddUser)
 // /admins/<%=el.id%>/delete
 router.get('/:id/delete', Controller.deleteUser)
 
-router.get('/tabelCategory', Controller.tabelCategory)
+
+
+
+
+
+
 // /admins/<%=el.id%>/editCategory
-router.get('/admins/:id/editCategory', Controller.FormEditCategory)
+
 
 
 
