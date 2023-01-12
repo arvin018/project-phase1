@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <a href="/admins">home Admin</a>
+    <a href="/users">home Users</a>
+    <br>
+    <br>
+   
+    <h1>Profile</h1>
+    <form action="/users/<%=profileUsers.id%>/edit/profiles" method="POST">
+    Username <br>
+    <input type="text" name="username" id="" value="<%=profileUsers.username%>" disabled><br><br>
+    password  <br>
+    <input type="text" name="password" id="" value="<%=profileUsers.password%>"><br>
+    <br>
+    first Name  <br>
+    <input type="text" name="firstName" id="" value="<%=profileUsers.firstName%>"><br>
+    <br>
+    <br>
+    last Name  <br>
+    <input type="email" name="lastName" id="" value="<%=profileUsers.lastName%>"><br>
+    <br>
+    <br>
+    phone Number  <br>
+    <input type="string" name="phoneNumber" id="" value="<%=profileUsers.phoneNumber%>" disabled><br>
+    <br>
+    <br>
+    email  <br>
+    <input type="email" name="email" id="" value="<%=profileUsers.email%>"><br>
+    <br>
+    <br>
+
+    Wallet  <br>
+    <input type="number" name="password" id="" value="<%=profileUsers.wallet%>" disabled><br>
+    <br>
+    <br>
+    <input type="submit">
+</form>
+</body>
+</html>
