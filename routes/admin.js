@@ -7,7 +7,10 @@ const router = express.Router()
 router.get('/', Controller.homeAdmin)
 
 router.get('/tabelUsers', Controller.tabelUser)
-router.get('/tabelCategory', Controller.tabelCategory)
+router.get('/tabelCategorys', Controller.tabelCategory)
+router.get('/tabelProducts', Controller.tabelProduct)
+router.get('/tabelCompanys', Controller.tabelCompany)
+
 
 router.get('/add', Controller.formAddUser)
 router.post('/add', Controller.handlerAddUser)
@@ -16,16 +19,26 @@ router.post('/add', Controller.handlerAddUser)
 router.get('/addCategorys', Controller.formAddCategory)
 router.post('/addCategorys', Controller.handlAddCategory)
 
+// /addCompanys
+router.get('/addCompanys',Controller.formAddCompany)
+router.post('/addCompanys',Controller.handlerAddCompany)
+
 router.get('/:id/editCategorys', Controller.FormEditCategory)
 router.post('/:id/editCategorys', Controller.handletEditCategory)
+
+// /admins/addCompanys
 
 // /admins/<%=el.id%>/edit
 router.get('/:id/edit', Controller.formEditUser)
 router.post('/:id/edit', Controller.handlerEditAddUser)
 
+// /admins/<%=el.id%>/editCompanys
+router.get('/:id/editCompanys', Controller.formEditCompany)
+router.post('/:id/editCompanys', Controller.handlerEditCompany)
+
+
 // /admins/<%=el.id%>/delete
 router.get('/:id/delete', Controller.deleteUser)
-
 
 
 
