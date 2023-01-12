@@ -2,7 +2,7 @@
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
-  async up (queryInterface, Sequelize) {
+  up (queryInterface, Sequelize) {
     /**
      * Add altering commands here.
      *
@@ -12,7 +12,7 @@ module.exports = {
     return queryInterface.addColumn('Products','imageUrl',Sequelize.STRING)
   },
 
-  async down (queryInterface, Sequelize) {
+  down (queryInterface, Sequelize) {
     /**
      * Add reverting commands here.
      *

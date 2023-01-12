@@ -1,0 +1,18 @@
+[
+    {
+        "firstName": "John",
+        "lastName": "Doe",
+        "wallet": 150000,
+        "phoneNumber": "08123456789",
+        "email": "johndower@gmail.com",
+        "UserId": 1
+    },
+    {
+        "firstName": "Wawan",
+        "lastName": "Geming",
+        "wallet": 300000,
+        "phoneNumber": "08129876542",
+        "email": "wawangeming666@gmail.com",
+        "UserId": 2
+    }
+]
