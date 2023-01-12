@@ -85,7 +85,19 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id'
       }
       
-    }
+    },
+    denom: {
+      type :DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          msg:'denom not empty'
+        },
+        notNull:{
+          msg:'denom not null'
+        }
+      }
+    },
   }, {
     sequelize,
     modelName: 'Product',
