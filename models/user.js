@@ -2,7 +2,10 @@
 const {
   Model
 } = require('sequelize');
+
+var bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
+
   class User extends Model {
     /**
      * Helper method for defining associations.
@@ -20,6 +23,14 @@ module.exports = (sequelize, DataTypes) => {
     password: DataTypes.STRING,
     typeUser: DataTypes.STRING
   }, {
+    hook : {
+      beforeCreate(instance, option) {
+        console.log(instance, '<<<< ini before Create')
+        const salt = bcrypt.genSaltSync(10)
+        const hash = bcrypt.hashSync(instance.password, salt)
+        instance.password = hash;
+      }
+    },
     sequelize,
     modelName: 'User',
   });
