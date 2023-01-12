@@ -1,5 +1,5 @@
 
-const { User, Profile, Category, Product, Company, Transaction } = require("../models/index")
+const { User, Profile, Category, Product, Company, Transaction, Sequelize } = require("../models/index")
 const bcrypt = require('bcryptjs');
 const { formatRupiah, buy } = require("../helpers/helper");
 const { Op } = require("sequelize");
@@ -50,8 +50,8 @@ class Controller {
       }
     })
       .then((data) => {
-        res.send(data)
-        // res.render('buyProduct', { data, formatRupiah, buy})
+        // res.send(data)
+        res.render('buyProduct', { data, formatRupiah, buy})
       })
       .catch((err) => {
         res.send(err)
@@ -76,7 +76,38 @@ class Controller {
   }
 
   static homeUser(req, res) {
-    res.render('homeUser')
+    const { category, search } = req.query
+    const {error} =req.query
+
+    let option = {
+      where: {},
+      include: {
+        model: Product,
+        attributes: ['id', 'name', 'imageUrl'],
+        where: {},
+      }
+    }
+    // [Sequelize.fn('DISTINCT', Sequelize.col('country')) ,'country']
+    if (search) {
+      option.include.where.name = {
+        [Op.iLike]: `%${search}%`
+      }
+    }
+    
+    if (category) {
+      option.where.name = {
+        [Op.iLike]: `%${category}%`
+      }
+    }
+
+    Category.findAll(option)
+      .then((data) => {
+        // res.send(data)
+        res.render('homeUser', { data ,error})
+      })
+      .catch((err) => {
+        res.send(err)
+      })
   }
 
   static tabelUser(req, res) {
@@ -377,7 +408,7 @@ static tabelProduct (req,res){
         UserId:result.id
       })
       .then((data)=>{
-        res.redirect('/users')
+        res.redirect('/')
       })
     }).catch((err) => {
       res.send(err)
@@ -418,6 +449,115 @@ static tabelProduct (req,res){
 
       // res.render('homeUsers')
   
+   }
+
+   static showReport(req, res) {
+    let tanggal = [
+      '2023-01-06',
+      '2023-01-07',
+      '2023-01-08',
+      '2023-01-09',
+      '2023-01-10',
+      '2023-01-11',
+      '2023-01-12',
+    ]
+
+    for (let i = 0; i < tanggal.length; i++) {
+
+    }
+
+    // Transaction.findAll({
+    //   attributes: [
+    //     [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+    //   ]
+
+    // })
+    //   .then((data) => {
+    //     res.send(data)
+    //     // res.render('report', { data })
+    //   })
+    //   .catch((err) => {
+    //     res.send(err)
+    //   })
+    let tgl12 = new Date("2023-01-12")
+   let  all = [];
+    Transaction.findAll({
+      attributes: [
+        [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+      ],where:{
+        createdAt: '2023-01-12 20:20:35.342 +0700'
+      }
+    })
+      .then((data1) => {
+        all.push(data1)
+        return Transaction.findAll({
+          attributes: [
+            [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+          ],where:{
+            createdAt: '2023-01-11 20:20:35.342 +0700'
+          }
+        })
+      })
+      .then((data2)=>{
+        all.push(data2)
+        return Transaction.findAll({
+          attributes: [
+            [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+          ],where:{
+            createdAt: '2023-01-10 20:20:35.342 +0700'
+          }
+        })
+      })
+      .then((data3)=>{
+        all.push(data3)
+        return Transaction.findAll({
+          attributes: [
+            [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+          ],where:{
+            createdAt: '2023-01-09 20:20:35.342 +0700'
+          }
+        })
+        // all.push(data2)
+        // res.render('report', { all })
+      })
+      .then((data4)=>{
+        all.push(data4)
+        return Transaction.findAll({
+          attributes: [
+            [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+          ],where:{
+            createdAt: '2023-01-08 20:20:35.342 +0700'
+          }
+        })
+      })
+      .then((data5)=>{
+        all.push(data5)
+        return Transaction.findAll({
+          attributes: [
+            [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+          ],where:{
+            createdAt: '2023-01-07 20:20:35.342 +0700'
+          }
+        })
+      })
+      .then((data6)=>{
+        all.push(data6)
+        return Transaction.findAll({
+          attributes: [
+            [Sequelize.fn('COUNT', Sequelize.col('Transaction.createdAt')), 'count']
+          ],where:{
+            createdAt: '2023-01-06 20:20:35.342 +0700'
+          }
+        })
+      })
+      .then((data7) => {
+        all.push(data7)
+        res.render('report', { all })
+      })
+      .catch((err) => {
+        res.send(err)
+      })
+    
    }
 
 }
