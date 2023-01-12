@@ -98,6 +98,21 @@ module.exports = (sequelize, DataTypes) => {
         }
       }
     },
+    imageUrl: {
+      type :DataTypes.STRING,
+      allowNull:false,
+      validate:{
+        notEmpty:{
+          msg:'imageUrl not empty'
+        },
+        notNull:{
+          msg:'imageUrl not null'
+        },
+        isUrl:{
+          msg:'imageUrl must be http://'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Product',

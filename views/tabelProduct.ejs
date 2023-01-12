@@ -12,7 +12,7 @@
     <a href="/users">home Users</a>
     <br>
     <br>
-    <h1>Tabel Category Admins</h1>
+    <h1>Tabel Product Admins</h1>
     <a href="/admins/addCategorys"> Add Category</a>
 
     <br>
@@ -24,11 +24,11 @@
             <th>Action</th>
         </tr>
             <% tabelCategory.forEach((el,i) => { %>
-        <tr>
-            <td> <%=(i+1)%> </td>
-            <td> <%=el.name%> </td>
-            <td> <a href="/admins/<%=el.id%>/editCategorys">  <button>  Edit  </button> </a> </td>
-        </tr> 
+            <tr>
+                <td> <%=(i+1)%> </td>
+                <td> <%=el.name%> </td>
+                <td> <a href="/admins/<%=el.id%>/editCategorys">  <button>  Edit  </button> </a> </td>
+            </tr>
             <% }) %>
         
     </table>
