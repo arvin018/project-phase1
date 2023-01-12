@@ -359,7 +359,10 @@ static tabelProduct (req,res){
         if(user){
           const  isValidPassword =bcrypt.compareSync(password,user.password) //true or false
           if(isValidPassword){
-            console.log(user.role);
+            console.log(user.id,">>>>>>>");
+            console.log(user.role,">>>>>>>");
+            req.session.userId= user.id //set session dicontroller
+            // console.log(userId);
             if(user.role === 'admin'){
               return res.redirect('/admins')
             }else if (user.role === 'user'){
@@ -375,6 +378,7 @@ static tabelProduct (req,res){
         }
       })
       .catch(err=>{
+        console.log(err)
         res.send(err)
       })
 
