@@ -27,6 +27,8 @@ router.post('/addCompanys',Controller.handlerAddCompany)
 router.get('/addPrdoucts',Controller.formAddProduct)
 router.post('/addPrdoucts',Controller.handlerAddProduct)
 
+router.get('/report',Controller.showReport)
+
 router.get('/:id/editCategorys', Controller.FormEditCategory)
 router.post('/:id/editCategorys', Controller.handletEditCategory)
 

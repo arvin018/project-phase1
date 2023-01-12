@@ -4,20 +4,72 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <style>body {background: linear-gradient(to right, rgba(106, 17, 203, 1), rgba(37, 117, 252, 1))}</style>
     <title>Document</title>
 </head>
-<body>
-  
-    <a href="/">Home</a>
-    <a href="/admins">home Admin</a>
-    <a href="/users">home Users</a>
+<body>    
+    <!-- NAVBAR -->
+    <%- include('./navbarLoggedIn') %>
 
+    <!-- CAROUSEL -->
+    <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="max-width: 130vh; margin: auto;">
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="https://imgtr.ee/images/2023/01/12/GU7r3.png" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://imgtr.ee/images/2023/01/12/GUGuL.png" class="d-block w-100" alt="...">
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+    
 
-    <h1>Home Users</h1>
-    <br>
-    <br>
-     <h1>Profile User</h1>
-     <a href="/users/register">Register</a>
-     <a href="/users/profiles">Profile</a>
+    <!-- BUTTON CATEGORY & SEARCH BAR -->
+    <div class="d-flex justify-content-center mb-4">
+        <form action="/" method="get" class="container mt-4" style="margin-left: 280px;">
+            <% data.forEach(el => { %>
+                <button type="submit" name="category" value="<%= el.name %>" class="btn btn-warning mx-1"><%= el.name %></button>
+            <% }) %>
+        </form>
+        <div class="container">
+            <form action="/" method="get" class="d-flex mt-4">
+              <input name="search" class="form-control me-2 w-50" type="text" placeholder="Search products..." aria-label="Search">
+              <button class="btn btn-primary" type="submit">Search</button>
+            </form>
+        </div>
+    </div>
+    
+    <!-- PRODUCT CARD -->
+    <div class="container mt-4">
+        <div class="row row-cols-4 grid gap-3 d-flex mb-5" style="margin-left: 40px;">
+        <% data.forEach((el) => { %>
+            <% el.Products.forEach((elProd) => { %>
+                <div class="card column-gap-3" style="width: 18rem;">
+                    <div style="width: 160px; margin: auto;">
+                        <img src="<%= elProd.imageUrl %>" class="card-img-top mt-2 object-fit-fill border rounded" alt="product_image">
+                    </div>
+                    <div class="card-body" style="margin: auto;">
+                        <h5 class="card-title" style="height: 50px; text-align: center;"><%= elProd.name %></h5>
+                    </div>
+                    <div class="mb-1" style="margin: auto;">
+                        <button type="button" class="btn btn-primary"><a href="/users/buy/<%= elProd.name %>" class="nav-link">BUY</a></button>                   
+                    </div>
+                </div>
+            <% }) %>
+        <% }) %>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
 </body>
 </html>
