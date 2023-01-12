@@ -1,16 +1,34 @@
-const { User, Profile, Category, Product, Company} = require("../models/index")
+const { User, Profile, Category, Product, Company, Transaction } = require("../models/index")
+const { formatRupiah, buy } = require("../helpers/helper");
+const { Op } = require("sequelize");
 
 class Controller {
 
   static home(req, res) {
-    const { category } = req.query
+    const { category, search } = req.query
 
-    Category.findAll({
+    let option = {
+      where: {},
       include: {
         model: Product,
-        attributes: ['id', 'name', 'imageUrl']
+        attributes: ['id', 'name', 'imageUrl'],
+        where: {},
       }
-    })
+    }
+    // [Sequelize.fn('DISTINCT', Sequelize.col('country')) ,'country']
+    if (search) {
+      option.include.where.name = {
+        [Op.iLike]: `%${search}%`
+      }
+    }
+    
+    if (category) {
+      option.where.name = {
+        [Op.iLike]: `%${category}%`
+      }
+    }
+
+    Category.findAll(option)
       .then((data) => {
         // res.send(data)
         res.render('home', { data })
@@ -21,16 +39,29 @@ class Controller {
   }
 
   static buyProduct(req, res) {
-    const id = req.params.id
+    const {id} = req.params
 
-    Product.findOne({
+    Product.findAll({
       where: {
-        id
+        "name": id
       }
     })
       .then((data) => {
-        // res.send(data)
-        res.render('buyProduct', { data })
+        res.send(data)
+        // res.render('buyProduct', { data, formatRupiah, buy})
+      })
+      .catch((err) => {
+        res.send(err)
+      })
+  }
+
+  static buyProcess(req, res) {
+    // const { ProductId, UserId, invoice } = req.body
+    const {id} = req.params
+    console.log(req.body);
+    Transaction.create({ ProductId, UserId: 1, invoice })
+      .then(() => {
+        res.redirect(`/users/buy/${id}`)
       })
       .catch((err) => {
         res.send(err)

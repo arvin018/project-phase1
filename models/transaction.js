@@ -38,11 +38,11 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   // ADD HOOK BUAT GENERATE INVOICE
-  // Transaction.addHook('beforeCreate', (transaction, options) => {
-  //   let time = new Date().getTime()
+  Transaction.addHook('beforeCreate', (transaction, options) => {
+    let time = new Date().getTime()
 
-  //   transaction.invoice = `OD-${ProductId}-${UserId}-${time}`
-  // })
+    transaction.invoice = `OD-${ProductId}-${UserId}-${time}`
+  })
 
   return Transaction;
 };

@@ -7,6 +7,7 @@ const router = express.Router()
 router.get('/', Controller.homeUser)
 
 
+router.post('/buy/product', Controller.buyProcess)
 router.get('/buy/:id', Controller.buyProduct)
 
 router.get('/users/:id/edit/profiles', Controller.formProfile)

@@ -15,11 +15,11 @@
     <!-- CAROUSEL -->
     <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel" style="max-width: 130vh; margin: auto;">
         <div class="carousel-inner">
-          <div class="carousel-item active" data-bs-interval="1000">
-            <img src="https://argamingshop.com/assets/img/1650360641ezgif.com-gif-maker%20(11).webp" class="d-block w-100" alt="...">
+          <div class="carousel-item active" data-bs-interval="2000">
+            <img src="https://imgtr.ee/images/2023/01/12/GU7r3.png" class="d-block w-100" alt="...">
           </div>
-          <div class="carousel-item" data-bs-interval="3000">
-            <img src="https://argamingshop.com/assets/img/1650271803ezgif.com-gif-maker%20(10).webp" class="d-block w-100" alt="...">
+          <div class="carousel-item" data-bs-interval="2000">
+            <img src="https://imgtr.ee/images/2023/01/12/GUGuL.png" class="d-block w-100" alt="...">
           </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -35,14 +35,14 @@
 
     <!-- BUTTON CATEGORY & SEARCH BAR -->
     <div class="d-flex justify-content-center mb-4">
-        <form action="/" method="get" class="container mt-4">
+        <form action="/" method="get" class="container mt-4" style="margin-left: 280px;">
             <% data.forEach(el => { %>
-                <button type="submit" name="position" value="All" class="btn btn-warning mx-1"><%= el.name %></button>
+                <button type="submit" name="category" value="<%= el.name %>" class="btn btn-warning mx-1"><%= el.name %></button>
             <% }) %>
         </form>
         <div class="container">
             <form action="/" method="get" class="d-flex mt-4">
-              <input name="search" class="form-control me-2 w-25" type="text" placeholder="Search products..." aria-label="Search">
+              <input name="search" class="form-control me-2 w-50" type="text" placeholder="Search products..." aria-label="Search">
               <button class="btn btn-primary" type="submit">Search</button>
             </form>
         </div>
@@ -61,7 +61,7 @@
                         <h5 class="card-title" style="height: 50px; text-align: center;"><%= elProd.name %></h5>
                     </div>
                     <div class="mb-1" style="margin: auto;">
-                        <button type="button" class="btn btn-primary"><a href="/users/buy/<%= elProd.id %>" class="nav-link">BUY</a></button>                   
+                        <button type="button" class="btn btn-primary"><a href="/users/buy/<%= elProd.name %>" class="nav-link">BUY</a></button>                   
                     </div>
                 </div>
             <% }) %>
