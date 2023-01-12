@@ -1,9 +1,11 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
     <div class="container-fluid">
         <img src="https://imgtr.ee/images/2023/01/12/GqDpJ.png" alt="Logo" width="140" height="24" class="d-inline-block align-text-top">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Login</button>
+       
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Login</button>
+
         <!-- modal login -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
               <div class="modal-content">
                 <div class="modal-header">
@@ -12,15 +14,17 @@
                 </div>
                 <div class="modal-body">
                     <p style="text-align: center;">Welcome to WantauShop, please login first!</p>
-
-                    <form action="" method="post">
+                      <%if (error){ %>
+                        <p style="color: red; text-align: center;">  <%=error%></p>
+                        <%}%>
+                    <form action="/login" method="POST">
                         <div class="form-outline mb-4">
                             <label class="form-label">Username</label>
-                            <input type="text" name="" class="form-control form-control-lg" />
+                            <input type="text" name="username" class="form-control form-control-lg" />
                         </div>
                         <div class="form-outline mb-4">
                             <label class="form-label">Password</label>
-                            <input type="text" name="" class="form-control form-control-lg" />
+                            <input type="text" name="password" class="form-control form-control-lg" />
                         </div>
                         <button class="btn btn-primary btn-lg px-5" style="margin-left: 160px;" type="submit">Login</button>
                     </form>
