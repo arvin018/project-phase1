@@ -1,4 +1,4 @@
-const {User,Profile} = require("../models/index")
+const {User,Profile,Category} = require("../models/index")
 
 class Controller{
 
@@ -84,7 +84,19 @@ class Controller{
         res.send(err)
     });
   }
+  static tabelCategory(req,res){
+    Category.findAll()
+    .then((result) => {
+      res.render('tabelCategory',{tabelCategory:result})
+    }).catch((err) => {
+      res.send(err);
+    });
+  }
 
+  static FormEditCategory(req,res){
+    req
+    res.render('form')
+  }
   ///profiles
   static formProfile(req,res){
     res.render('formProfile')

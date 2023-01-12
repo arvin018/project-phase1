@@ -29,7 +29,7 @@ module.exports = (sequelize, DataTypes) => {
         }
       }  
     },
-    desciption: {
+    description: {
       type :DataTypes.STRING,
       allowNull:false,
       validate:{
