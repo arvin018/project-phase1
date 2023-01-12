@@ -12,6 +12,7 @@ module.exports = {
     return queryInterface.addColumn('Products','imageUrl',Sequelize.STRING)
   },
 
+
    down (queryInterface, Sequelize) {
     /**
      * Add reverting commands here.

@@ -1,0 +1,38 @@
+[
+    {
+        "name": "Mobile Legends: Bang Bang",
+        "imageUrl": "https://imgtr.ee/images/2023/01/11/GqwnA.jpg",
+        "description": "Top Up Diamond Mobile Legends Resmi Moonton 100% Legal , Mudah , Aman dan Terpercaya. Cara Top Up Diamond Mobile Legends",
+        "denom": "5 (5 + 0)",
+        "price": 1600,
+        "CategoryId": 1,
+        "CompanyId": 1
+    },
+    {
+        "name": "PUBG Mobile",
+        "imageUrl": "https://imgtr.ee/images/2023/01/12/GqStz.jpg",
+        "description": "Top Up UC PUBG Mobile Resmi Tencent 100% Legal , Mudah , Aman dan Terpercaya. Cara Top Up UC PUBG Mobile",
+        "denom": "263 UC",
+        "price": 44000,
+        "CategoryId": 1,
+        "CompanyId": 1
+    },
+    {
+        "name": "Point Blank",
+        "imageUrl": "https://imgtr.ee/images/2023/01/12/GqpRx.jpg",
+        "description": "Top Up Voucher Point Blank Cash",
+        "denom": "1200 PB Cash",
+        "price": 9200,
+        "CategoryId": 2,
+        "CompanyId": 1
+    },
+    {
+        "name": "Steam Wallet",
+        "imageUrl": "https://imgtr.ee/images/2023/01/12/GqpRx.jpg",
+        "description": "Top Up Voucher Steam Wallet",
+        "denom": "IDR 6.000 Steam",
+        "price": 6000,
+        "CategoryId": 2,
+        "CompanyId": 1
+    }
+]
