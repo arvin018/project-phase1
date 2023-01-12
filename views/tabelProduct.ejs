@@ -13,7 +13,7 @@
     <br>
     <br>
     <h1>Tabel Product Admins</h1>
-    <a href="/admins/addProduct"> Add Product</a>
+    <a href="/admins/addPrdoucts"> Add Product</a>
 
     <br>
     <br>
@@ -25,8 +25,8 @@
             <th>Denom</th>
             <th>Price</th>
             <th>imageUrl</th>
-            <th>category Id</th>
-            <th>company Id</th>
+            <th>category Name</th>
+            <th>company Name</th>
             <th colspan="2">Action</th>
         </tr>
              <% tabelProduct.forEach((el,i) => { %> 
@@ -40,7 +40,7 @@
                 <th> <%=el.CategoryId%></th>
                 <th> <%=el.CompanyId%></th>
                 <td> <a href="/admins/<%=el.id%>/editProducts">  <button>  Edit  </button> </a> </td>
-                <td> <a href="/admins/<%=el.id%>/editProducts">  <button>  Edit  </button> </a> </td>
+                <td> <a href="/admins/<%=el.id%>/deleteProducts">  <button>  Delete  </button> </a> </td>
             </tr>
             <% }) %>
         
