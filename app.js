@@ -7,14 +7,18 @@ const port = 3000
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: true }))
 
-app.use ('/',router)
 
 app.use(session({
   secret: 'keyboard cat',
   resave: false,
-  saveUninitialized: true,
-  cookie: { secure: true }
+  saveUninitialized: false,
+  cookie: { secure: false },
+  cookie:{
+    secure:false,
+    sameSite:true //untuk security dari crsf
+  } ///https
 }))
+app.use ('/',router)
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
