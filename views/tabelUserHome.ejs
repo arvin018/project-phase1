@@ -20,7 +20,7 @@
             <th>No</th>
             <th>Username</th>
             <th>Password</th>
-            <th>typeUser</th>
+            <th>Role</th>
             <th colspan="2">Action</th>
         </tr>
         
@@ -30,8 +30,8 @@
             <td> <%=el.username%> </td>
             <td> <%=el.password%> </td>
             <td> <%=el.role%> </td>
-            <td> <a href="/admins/<%=el.id%>/edit">  <button>  Edit  </button> </a> </td>
-            <td> <a href="/admins/<%=el.id%>/delete"> <button> Delete </button> </a> </td>
+            <td> <a href="/admins/<%=el.id%>/edit">  <button class="btn btn-primary">  Edit  </button> </a> </td>
+            <td> <a href="/admins/<%=el.id%>/delete"> <button class="btn btn-danger"> Delete </button> </a> </td>
     </tr>
             <% }) %>
         
