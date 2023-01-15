@@ -11,7 +11,7 @@
     <!-- NAVBAR -->
     <%- include('./navbarAdmin') %>
     
-    <h1 style="text-align: center;">Tabel Category Admins</h1>
+    <h1 style="text-align: center;">Tabel Category Products</h1>
     <a href="/admins/addCategorys"> Add Category</a>
 
     <br>
@@ -26,7 +26,7 @@
         <tr>
             <td> <%=(i+1)%> </td>
             <td> <%=el.name%> </td>
-            <td> <a href="/admins/<%=el.id%>/editCategorys">  <button>  Edit  </button> </a> </td>
+            <td> <a href="/admins/<%=el.id%>/editCategorys">  <button class="btn btn-primary">  Edit  </button> </a> </td>
         </tr> 
             <% }) %>
         
